@@ -1,6 +1,7 @@
 
-require('dotenv').config(); // if you're using dotenv for environment variables
-  
+// require('dotenv').config(); // if you're using dotenv for environment variables
+require('dotenv').config()
+ 
 module.exports = {
   development: {
     username: process.env.DB_USER,

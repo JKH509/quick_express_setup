@@ -1,23 +1,19 @@
-const { createSchemaAndSyncModel } = require("../utils/schemaTableCreateFunction");
+// const { createSchemaAndSyncModel } = require("../utils/schemaTableCreateFunction");
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
-      user_name: {
+  const Employee = sequelize.define("Employee", {
+    firstname: {
           type: DataTypes.STRING,
           allowNull: false,
       }, 
-      password: {
+      lastname: {
           type: DataTypes.STRING,
           allowNull: false,
       },
-      token: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    },
     }, 
     {
-        schema: 'user_schema',
-        tableName:"users"
+        schema: 'employee_schema',
+        tableName:"employees"
     } 
   );
 
@@ -26,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   // {"username": "Jason", "pwd":"OneString!sTo7manY"}
 
   // ### Create Schema and table, true or false for creating schema
-  // createSchemaAndSyncModel(sequelize, false, 'user_schema', true, User);
+  // createSchemaAndSyncModel(sequelize, true, 'employee_schema', false, Employee);
  
-  return User;
+  return Employee;
 };

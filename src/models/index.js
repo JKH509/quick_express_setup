@@ -16,7 +16,7 @@ function loadModels(directory) {
     .forEach(entry => {
       const entryPath = path.join(directory, entry);
       if (fs.statSync(entryPath).isDirectory()) {
-        // It's a directory, recurse into it
+        // If it's a directory, recurse into it
         loadModels(entryPath);
       } else if (
         entry.indexOf('.') !== 0 &&
@@ -40,6 +40,9 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// Models
+// db.User = require('./User')(sequelize, Sequelize.DataTypes);
 
 
 // TEST CONNECTION 
