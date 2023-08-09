@@ -7,8 +7,6 @@ const authorizeMiddleware = (allowedRoles) => {
       // role: "test"
     }
     const  {role}  = user;
-    console.log("ROLE ", role)
-
     if (allowedRoles.includes(role)) {
       next(); // User has an allowed role, proceed to next middleware
     } else {

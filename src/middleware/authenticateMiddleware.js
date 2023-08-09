@@ -16,7 +16,7 @@ const authenticateMiddleware = (req, res, next) => {
     next();
   } else {
     // If not, send a 401 Unauthorized response
-    res.status(401).send('Unauthorized');
+    res.status(401).send('Unauthorized middleware');
   }
 };
 

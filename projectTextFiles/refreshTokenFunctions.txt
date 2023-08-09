@@ -1,0 +1,86 @@
+1. Create a new token:
+
+const newToken = await RefreshToken.create({
+    user_id: 1,
+    token: "YOUR_TOKEN_VALUE",
+    expires_at: "YOUR_EXPIRY_DATE", 
+    // ... other fields as needed
+});
+
+
+2. Find a token by ID:
+
+const token = await RefreshToken.findOne({
+    where: {
+        id: 1
+    }
+});
+
+
+3. Find a token by token value:
+
+const token = await RefreshToken.findOne({
+    where: {
+        token: "YOUR_TOKEN_VALUE"
+    }
+});
+
+
+4. Update a token's revoked status:
+
+await RefreshToken.update({
+    is_revoked: true
+}, {
+    where: {
+        id: 1
+    }
+});
+
+
+5. Delete a token by ID:
+
+await RefreshToken.destroy({
+    where: {
+        id: 1
+    }
+});
+
+
+6. Retrieve all tokens for a specific user:
+
+const userTokens = await RefreshToken.findAll({
+    where: {
+        user_id: 1
+    }
+});
+
+
+7. Revoke all tokens for a specific user:
+
+await RefreshToken.update({
+    is_revoked: true
+}, {
+    where: {
+        user_id: 1
+    }
+});
+
+
+8. Remove all expired tokens:
+
+await RefreshToken.destroy({
+    where: {
+        expires_at: {
+            [Sequelize.Op.lt]: new Date()
+        }
+    }
+});
+
+(Note: Sequelize.Op.lt stands for "less than", and it will match tokens that have an expiration date before the current time.)
+
+9. Count all tokens for a specific user:
+const count = await RefreshToken.count({
+    where: {
+        user_id: 1
+    }
+});
